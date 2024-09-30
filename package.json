@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "setup": "npm i express nodemon node-fetch@2 concurrently && node",
+    "setup": "npm i express nodemon node-fetch@2 concurrently && node cache.js",
     "start": "concurrently \"nodemon --watch . --ext js app.js\" \"php -S localhost:3000 -t ./src\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
