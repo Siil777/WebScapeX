@@ -5,24 +5,19 @@ use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\WebDriverBy;
 
 define('CACHE_FILE', 'src/cache/data_cache.json');
-define('CACHE_TTL', 3600);
 
 function getCacheData(){
     if(file_exists(CACHE_FILE)){
         $cacheContent = file_get_contents(CACHE_FILE);
         $cacheData = json_decode($cacheContent, true);
-        if(isset($cacheData['timestamp']) && (time() - $cacheData['timestamp'] < CACHE_TTL) ){
+        if(isset($cacheData['data'])){
             return $cacheData['data'];
         }
     }
     return null;
 }
 function  saveCacheData($data){
-    $cacheData = [
-        'timestamp' => time(),
-        'data' => $data
-    ];
-    file_put_contents(CACHE_FILE, json_encode($cacheData));
+    file_put_contents(CACHE_FILE, json_encode(['data'=>$data]));
 }
 $cacheData = getCacheData();
 if($cacheData !== null){
