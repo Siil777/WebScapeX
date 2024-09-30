@@ -1,5 +1,7 @@
 ## Install
 
+# o((⊙﹏⊙))o
+
 1. Install composer
    
    [Composer](https://getcomposer.org/download/)
