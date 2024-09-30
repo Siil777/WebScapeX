@@ -12,6 +12,7 @@
         }
     ],
     "require": {
-        "php-webdriver/webdriver": "^1.1"
+        "php-webdriver/webdriver": "^1.15",
+        "ext-json": "*"
     }
 }

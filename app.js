@@ -19,4 +19,4 @@ app.get('/get', async (req,res)=>{
         res.status(500).json({error: 'Field to fetch data'});
     }
 });
-app.listen(port, console.log(`app running at port ${port}`));
+app.listen(port, ()=> console.log(`app running at port ${port}`));
