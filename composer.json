@@ -1,0 +1,17 @@
+{
+    "name": "admin/web-scape-x",
+    "autoload": {
+        "psr-4": {
+            "Admin\\WebScapeX\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Siil777",
+            "email": "pavel.ivanov.thk@gmail.com"
+        }
+    ],
+    "require": {
+        "php-webdriver/webdriver": "^1.1"
+    }
+}
