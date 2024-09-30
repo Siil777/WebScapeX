@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-//app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'src')));
 app.get('/get', async (req,res)=>{
     try{
         const response = await fetch('http://localhost:8000/api.php');
