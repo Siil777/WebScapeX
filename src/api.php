@@ -1,10 +1,10 @@
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\WebDriverBy;
 
-define('CACHE_FILE', 'src/cache/data_cache.json');
+define('CACHE_FILE', 'cache/data_cache.json');
 
 function getCacheData(){
     if(file_exists(CACHE_FILE)){
