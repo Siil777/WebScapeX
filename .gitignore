@@ -1,3 +1,4 @@
 node_modules/
 vendor/
 src/cache/
+src/output_dir/*
