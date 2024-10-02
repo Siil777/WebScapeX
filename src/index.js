@@ -1,22 +1,26 @@
-let productList = [];
+//let productList = [];
 
 async function fetchShopData(){
     try{
         const response = await fetch('http://localhost:999/get');
-        const data = await response.json();
+        const text = await  response.text();
+        console.log('Response', text);
+        const data = JSON.parse(text);
+        console.log('data', data);
+    /*    const data = await response.json();
 
 
         const Elements = Object.keys(data);
         productList = data[Elements];
-        UserI();
+        //UserI();
 
-        console.log('goods', productList);
+        console.log('goods', productList);*/
 
     }catch(e){
         console.error(e);
     }
 }
-function UserI(Goods = productList){
+/*function UserI(Goods = productList){
     const container = document.getElementById('container');
     container.classList.add('d-flex','justify-content-center','mt-5');
     container.innerText = '';
@@ -31,7 +35,7 @@ function UserI(Goods = productList){
     });
     container.appendChild(topDiv);
 
-}
+}*/
 document.addEventListener('DOMContentLoaded', ()=>{
     fetchShopData();
 })

@@ -1,6 +1,9 @@
 <?php
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING);
 ini_set('display_errors', 0);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 
 require_once __DIR__ . '/../vendor/autoload.php';
 use Facebook\WebDriver\Remote\RemoteWebDriver;
@@ -16,7 +19,15 @@ define('CACHE_FILE', 'cache/data_cache.json');
 function getCacheData() {
     if (file_exists(CACHE_FILE)) {
         $cacheContent = file_get_contents(CACHE_FILE);
+        if($cacheContent===false){
+            file_put_contents('log.txt', 'filed to read cache file' . PHP_EOL, FILE_APPEND);
+            return null;
+        }
         $cacheData = json_decode($cacheContent, true);
+        if(json_last_error() !== JSON_ERROR_NONE){
+            file_put_contents('log.txt', 'invalid json' . json_last_error_msg() . PHP_EOL, FILE_APPEND);
+            return null;
+        }
         if (isset($cacheData['data'])) {
             return $cacheData['data'];
         }
@@ -107,11 +118,10 @@ if ($cacheData !== null) {
                     }
                 }
 
-                file_put_contents('log.txt', 'New data captured: ' . print_r($combineData, true) . PHP_EOL, FILE_APPEND);
             } else {
                 file_put_contents('log.txt', 'Load more button not visible' . PHP_EOL, FILE_APPEND);
             }
-        } catch (NoSuchElementException $e) {
+        } catch (Exception $e) {
             file_put_contents('log.txt', 'Load more button not found: ' . $e->getMessage() . PHP_EOL, FILE_APPEND);
         }
     } catch (Exception $e) {
