@@ -9,6 +9,7 @@ use Facebook\WebDriver\WebDriverDimension;
 use Facebook\WebDriver\WebDriverPoint;
 
 define('CACHE_FILE', 'cache/data_cache.json');
+define('OUTPUT_DIR', __DIR__ . '/output');
 
 function getCacheData(){
     if(file_exists(CACHE_FILE)){
@@ -31,18 +32,34 @@ if($cacheData !== null){
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36',
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.1 Safari/605.1.15',
     ];
+
+    // Randomly select a User-Agent
     $randomAgent = $userAgents[array_rand($userAgents)];
+
+    // Set desired capabilities including the User-Agent
     $capabilities = DesiredCapabilities::chrome();
     $capabilities->setCapability('chromeOptions', ['args' => ["--user-agent=$randomAgent"]]);
     $host = 'http://localhost:20653';
 
     $driver = RemoteWebDriver::create($host, $capabilities);
 
+    try{
+
+
     // Set the position and size of the window
     $driver->manage()->window()->setPosition(new WebDriverPoint(100, 100));
     $driver->manage()->window()->setSize(new WebDriverDimension(1200, 800));
 
     $driver->get('https://onoff.ee/et/62-nutitelefonid');
+
+    // Wait for the page to load completely
+    $driver->wait(30)->until(
+        WebDriverExpectedCondition::presenceOfElementLocated(WebDriverBy::cssSelector('.infinite-more-link.btn.btn-default.btn-large'))
+    );
+
+    // Scroll to the button to ensure it is in view
+    $btn = $driver->findElement(WebDriverBy::cssSelector('.infinite-more-link.btn.btn-default.btn-large'));
+    $driver->executeScript("arguments[0].scrollIntoView(true);", [$btn]);
 
     $responseData = [];
 
@@ -66,25 +83,24 @@ if($cacheData !== null){
             ];
         }
     }
-    $btn = $driver->findElement(WebDriverBy::cssSelector('.infinite-more-link.btn.btn-default.btn-large'));
     if($btn->isDisplayed()){
         $btn->click();
         file_put_contents('log.txt', 'btn clicked!' . PHP_EOL, FILE_APPEND);
 
         try {
-            // wait
+            // Wait for the new content to load with increased timeout
             $driver->wait(60)->until(
                 WebDriverExpectedCondition::presenceOfElementLocated(WebDriverBy::cssSelector('.new-content-selector'))
             );
 
-            // capture new content
+            // Capture the new content
             $newContentElements = $driver->findElements(WebDriverBy::cssSelector('.new-content-selector'));
             $newContent = [];
             foreach ($newContentElements as $element) {
                 $newContent[] = $element->getText();
             }
 
-            // combine old content and new one
+            // Combine new content with existing data
             $combineData = array_merge($combineData, $newContent);
         } catch (TimeoutException $e) {
             // Log the timeout exception
@@ -93,16 +109,31 @@ if($cacheData !== null){
     }else{
         echo "element not visible";
     }
-    $driver->takeScreenshot(__DIR__ . '/output_dir/screenshot_after_click.png');
+    }catch (Exception $e){
+        echo "No such window";
+    }
 
-    file_put_contents(__DIR__ . '/output_dir/page_source_after_click.html', $driver->getPageSource());
+    // Ensure the output directory exists
+    if (!file_exists(OUTPUT_DIR)) {
+        mkdir(OUTPUT_DIR, 0777, true);
+    }
+
+    // Save screenshot in the output directory
+    $driver->takeScreenshot(OUTPUT_DIR . '/screenshot_after_click.png');
+
+    // Save HTML page source in the output directory
+    file_put_contents(OUTPUT_DIR . '/page_source_after_click.html', $driver->getPageSource());
 
     $driver->quit();
 
     saveCacheData($combineData);
     $response = $combineData;
+
 }
 header('Content-Type: application/json');
 echo json_encode(['response'=> $response]);
+
+
+
 
 
