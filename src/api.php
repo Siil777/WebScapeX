@@ -1,9 +1,6 @@
 <?php
-error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING);
-ini_set('display_errors', 0);
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
+/* error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING);
+ini_set('display_errors', 0); */
 
 require_once __DIR__ . '/../vendor/autoload.php';
 use Facebook\WebDriver\Remote\RemoteWebDriver;
@@ -13,26 +10,20 @@ use Facebook\WebDriver\WebDriverExpectedCondition;
 use Facebook\WebDriver\Exception\TimeoutException;
 use Facebook\WebDriver\WebDriverDimension;
 use Facebook\WebDriver\WebDriverPoint;
-
 define('CACHE_FILE', 'cache/data_cache.json');
+define('CACHE_TTL', 3600);
 
 function getCacheData() {
     if (file_exists(CACHE_FILE)) {
         $cacheContent = file_get_contents(CACHE_FILE);
-        if($cacheContent===false){
-            file_put_contents('log.txt', 'filed to read cache file' . PHP_EOL, FILE_APPEND);
-            return null;
-        }
         $cacheData = json_decode($cacheContent, true);
-        if(json_last_error() !== JSON_ERROR_NONE){
-            file_put_contents('log.txt', 'invalid json' . json_last_error_msg() . PHP_EOL, FILE_APPEND);
-            return null;
-        }
-        if (isset($cacheData['data'])) {
+
+
+        if (isset($cacheData['timestamp']) && (time() - $cacheData['timestamp'] < CACHE_TTL)) {
             return $cacheData['data'];
         }
     }
-    return null;
+    return null; 
 }
 
 function saveCacheData($data) {
@@ -53,14 +44,13 @@ if ($cacheData !== null) {
     $host = 'http://localhost:20653';
 
     $driver = RemoteWebDriver::create($host, $capabilities);
+
     $driver->manage()->window()->setPosition(new WebDriverPoint(100, 100));
     $driver->manage()->window()->setSize(new WebDriverDimension(1200, 800));
 
     try {
         $driver->get('https://onoff.ee/et/62-nutitelefonid');
         $responseData = [];
-
-        // Capture initial phone data
         $h3Elements = $driver->findElements(WebDriverBy::tagName('h3'));
         $h3texts = [];
         foreach ($h3Elements as $h3Element) {
@@ -83,32 +73,32 @@ if ($cacheData !== null) {
             }
         }
 
-        // click load more
-        try {
-            $btn = $driver->findElement(WebDriverBy::cssSelector('.infinite-more-link.btn.btn-default.btn-large'));
-            if ($btn->isDisplayed()) {
-                $btn->click();
-                file_put_contents('log.txt', 'btn clicked!' . PHP_EOL, FILE_APPEND);
-
-                // Wait to capture tags wiht name and price
+        // load more
+        $btn = $driver->findElement(WebDriverBy::cssSelector('.infinite-more-link.btn.btn-default.btn-large'));
+        if ($btn->isDisplayed()) {
+            $btn->click();
+            file_put_contents('log.txt', 'btn clicked!' . PHP_EOL, FILE_APPEND);
+        
+            try {
+                // wait for next content
                 $driver->wait(60)->until(
                     WebDriverExpectedCondition::presenceOfElementLocated(WebDriverBy::tagName('h3'))
                 );
-
-                // new
+        
+                // Ccapture new one
                 $newH3Elements = $driver->findElements(WebDriverBy::tagName('h3'));
                 $newH3Texts = [];
                 foreach ($newH3Elements as $h3Element) {
                     $newH3Texts[] = $h3Element->getText();
                 }
-
+    
                 $newPriceElements = $driver->findElements(WebDriverBy::className('price'));
                 $newPrices = [];
                 foreach ($newPriceElements as $priceElement) {
                     $newPrices[] = $priceElement->getText();
                 }
-
-                // Combine old and new data
+        
+                // Combine 
                 for ($i = 0; $i < count($newPrices); $i++) {
                     if (isset($newH3Texts[$i]) && isset($newPrices[$i])) {
                         $combineData[] = [
@@ -117,21 +107,24 @@ if ($cacheData !== null) {
                         ];
                     }
                 }
-
-            } else {
-                file_put_contents('log.txt', 'Load more button not visible' . PHP_EOL, FILE_APPEND);
+            } catch (TimeoutException $e) {
+                file_put_contents('log.txt', 'TimeoutException: ' . $e->getMessage() . PHP_EOL, FILE_APPEND);
             }
-        } catch (Exception $e) {
-            file_put_contents('log.txt', 'Load more button not found: ' . $e->getMessage() . PHP_EOL, FILE_APPEND);
+        } else {
+            echo "Element not visible";
         }
-    } catch (Exception $e) {
-        file_put_contents('log.txt', 'Exception: ' . $e->getMessage() . PHP_EOL, FILE_APPEND);
-    } finally {
-        $driver->quit();
+        
+    } catch (TimeoutException $e) {
+        file_put_contents('log.txt', 'TimeoutException: ' . $e->getMessage() . PHP_EOL, FILE_APPEND);
     }
+
     saveCacheData($combineData);
     $response = $combineData;
     header('Content-Type: application/json');
     echo json_encode(['response' => $response]);
+
+    $driver->quit();  
 }
+
+
 

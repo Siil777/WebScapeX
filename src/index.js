@@ -1,20 +1,14 @@
-//let productList = [];
+let productList = [];
 
 async function fetchShopData(){
     try{
         const response = await fetch('http://localhost:999/get');
-        const text = await  response.text();
-        console.log('Response', text);
-        const data = JSON.parse(text);
-        console.log('data', data);
-    /*    const data = await response.json();
+        const data = await response.json();
+        console.log('goods', data);
 
-
-        const Elements = Object.keys(data);
-        productList = data[Elements];
+/*         const Elements = Object.keys(data);
+        productList = data[Elements]; */
         //UserI();
-
-        console.log('goods', productList);*/
 
     }catch(e){
         console.error(e);
