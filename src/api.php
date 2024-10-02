@@ -13,7 +13,6 @@ use Facebook\WebDriver\WebDriverPoint;
 
 define('CACHE_FILE', 'cache/data_cache.json');
 
-
 function getCacheData() {
     if (file_exists(CACHE_FILE)) {
         $cacheContent = file_get_contents(CACHE_FILE);
@@ -43,8 +42,6 @@ if ($cacheData !== null) {
     $host = 'http://localhost:20653';
 
     $driver = RemoteWebDriver::create($host, $capabilities);
-
-    //position and size of the window
     $driver->manage()->window()->setPosition(new WebDriverPoint(100, 100));
     $driver->manage()->window()->setSize(new WebDriverDimension(1200, 800));
 
@@ -52,7 +49,7 @@ if ($cacheData !== null) {
         $driver->get('https://onoff.ee/et/62-nutitelefonid');
         $responseData = [];
 
-        // capture first block
+        // Capture initial phone data
         $h3Elements = $driver->findElements(WebDriverBy::tagName('h3'));
         $h3texts = [];
         foreach ($h3Elements as $h3Element) {
@@ -75,19 +72,19 @@ if ($cacheData !== null) {
             }
         }
 
-        // click btn lae rohkem tooteid
+        // click load more
         try {
             $btn = $driver->findElement(WebDriverBy::cssSelector('.infinite-more-link.btn.btn-default.btn-large'));
             if ($btn->isDisplayed()) {
                 $btn->click();
                 file_put_contents('log.txt', 'btn clicked!' . PHP_EOL, FILE_APPEND);
 
-                // Wait for h3 and price
+                // Wait to capture tags wiht name and price
                 $driver->wait(60)->until(
                     WebDriverExpectedCondition::presenceOfElementLocated(WebDriverBy::tagName('h3'))
                 );
 
-                // Capture newly loaded data
+                // new
                 $newH3Elements = $driver->findElements(WebDriverBy::tagName('h3'));
                 $newH3Texts = [];
                 foreach ($newH3Elements as $h3Element) {
@@ -127,3 +124,4 @@ if ($cacheData !== null) {
     header('Content-Type: application/json');
     echo json_encode(['response' => $response]);
 }
+

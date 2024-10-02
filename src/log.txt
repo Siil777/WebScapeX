@@ -1217,3 +1217,628 @@ New data captured: Array
 
 )
 
+=======
+btn clicked!
+btn clicked!
+btn clicked!
+btn clicked!
+btn clicked!
+btn clicked!
+btn clicked!
+TimeoutException: 
+btn clicked!
+TimeoutException: 
+btn clicked!
+TimeoutException: 
+btn clicked!
+TimeoutException: 
+btn clicked!
+New data captured: Array
+(
+    [0] => Array
+        (
+            [name] => Asus Zenfone 10 8+256GB, punane
+            [price] => 849,90 €
+        )
+
+    [1] => Array
+        (
+            [name] => Blackview A70, sinine
+            [price] => 84 €
+        )
+
+    [2] => Array
+        (
+            [name] => Honor X8a 6GB+128GB, rohekas sinine
+            [price] => 179,90 €
+        )
+
+    [3] => Array
+        (
+            [name] => Infinix Note 12 (2023) 128GB, sinine X676C
+            [price] => 119,90 €
+        )
+
+    [4] => Array
+        (
+            [name] => Infinix Note 12 (2023) 128GB, valge X676C
+            [price] => 119,90 €
+        )
+
+    [5] => Array
+        (
+            [name] => POCO M5S 128GB, valge
+            [price] => 229 €
+        )
+
+    [6] => Array
+        (
+            [name] => Realme C11 (2021) 32GB, sinine
+            [price] => 99,90 €
+        )
+
+    [7] => Array
+        (
+            [name] => Realme C15 64GB, hõbedane
+            [price] => 109,90 €
+        )
+
+    [8] => Array
+        (
+            [name] => Realme C21Y 64GB, must
+            [price] => 84,90 €
+        )
+
+    [9] => Array
+        (
+            [name] => Realme C21Y 64GB, sinine
+            [price] => 95,90 €
+        )
+
+    [10] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 256GB, hall SM-F731BZAGEUE
+            [price] => 1099 €
+        )
+
+    [11] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 256GB, lilla SM-F731BLIGEUE
+            [price] => 1099 €
+        )
+
+    [12] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 256GB, roheline SM-F731BLGGEUE
+            [price] => 1099 €
+        )
+
+    [13] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 512GB, beež SM-F731BZEHEUE
+            [price] => 1199 €
+        )
+
+    [14] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 512GB, hall SM-F731BZAHEUE
+            [price] => 1199 €
+        )
+
+    [15] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 256GB, beež SM-F946BZEBEUE
+            [price] => 1699 €
+        )
+
+    [16] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 256GB, must SM-F946BZKBEUE
+            [price] => 1699 €
+        )
+
+    [17] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 256GB, sinine SM-F946BLBBEUE
+            [price] => 1699 €
+        )
+
+    [18] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 512GB, beež SM-F946BZECEUE
+            [price] => 1799 €
+        )
+
+    [19] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 512GB, must SM-F946BZKCEUE
+            [price] => 1799 €
+        )
+
+    [20] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 512GB, sinine SM-F946BLBCEUE
+            [price] => 1799 €
+        )
+
+    [21] => Array
+        (
+            [name] => Samsung Galaxy S23 Ultra, 256GB, must SM-S918BZKDEUE
+            [price] => 1049 €
+        )
+
+    [22] => Array
+        (
+            [name] => Samsung Galaxy S23 Ultra, 512GB, must SM-S918BZKHEUE
+            [price] => 1199 €
+        )
+
+    [23] => Array
+        (
+            [name] => Samsung Galaxy S23, 128GB, must SM-S911BZKDEUE
+            [price] => 649,90 €
+        )
+
+    [24] => Array
+        (
+            [name] => Samsung Galaxy S23, 128GB, roheline SM-S911BZGDEUE
+            [price] => 749,90 €
+        )
+
+    [25] => Array
+        (
+            [name] => Samsung Galaxy S23, 128GB, roosa SM-S911BLIDEUE
+            [price] => 749,90 €
+        )
+
+    [26] => Array
+        (
+            [name] => Samsung Galaxy S23, 256GB, must SM-S911BZKGEUE
+            [price] => 799,90 €
+        )
+
+    [27] => Array
+        (
+            [name] => Xiaomi Redmi 12C 64GB, sinine
+            [price] => 99 €
+        )
+
+    [28] => Array
+        (
+            [name] => Xiaomi Redmi Note 12 128GB, hall
+            [price] => 159 €
+        )
+
+    [29] => Array
+        (
+            [name] => Xiaomi Redmi Note 12 128GB, mündiroheline
+            [price] => 159 €
+        )
+
+    [30] => Array
+        (
+            [name] => Xiaomi Redmi Note 12 256GB, hall MZB0ETZEU
+            [price] => 189,91 €
+        )
+
+    [31] => Array
+        (
+            [name] => Xiaomi Redmi Note 12 Pro 5G 128GB, must
+            [price] => 259,90 €
+        )
+
+    [32] => Array
+        (
+            [name] => Honor Magic5 Lite 5G 8GB+256GB, must
+            [price] => 229,90 €
+        )
+
+    [33] => Array
+        (
+            [name] => Honor Magic5 Lite 5G 8GB+256GB, hõbedane
+            [price] => 229,90 €
+        )
+
+    [34] => Array
+        (
+            [name] => Apple iPhone 15 Pro 128GB, beež Titanium
+            [price] => 1129 €
+        )
+
+    [35] => Array
+        (
+            [name] => Apple iPhone 15 Pro 128GB, sinine Titanium
+            [price] => 1129 €
+        )
+
+    [36] => Array
+        (
+            [name] => Apple iPhone 15 Pro 128GB, valge Titanium
+            [price] => 1129 €
+        )
+
+    [37] => Array
+        (
+            [name] => Apple iPhone 15 Pro 256GB, beež Titanium
+            [price] => 1219 €
+        )
+
+    [38] => Array
+        (
+            [name] => Apple iPhone 15 Pro 256GB, must Titanium
+            [price] => 1219 €
+        )
+
+    [39] => Array
+        (
+            [name] => Apple iPhone 15 Pro 256GB, sinine Titanium
+            [price] => 1219 €
+        )
+
+    [40] => Array
+        (
+            [name] => Apple iPhone 15 Pro 256GB, valge Titanium
+            [price] => 1219 €
+        )
+
+    [41] => Array
+        (
+            [name] => Apple iPhone 15 Pro 512GB, must Titanium
+            [price] => 1459 €
+        )
+
+    [42] => Array
+        (
+            [name] => Apple iPhone 15 Pro 512GB, sinine Titanium
+            [price] => 1459 €
+        )
+
+    [43] => Array
+        (
+            [name] => Apple iPhone 15 Pro 512GB, valge Titanium
+            [price] => 1459 €
+        )
+
+    [44] => Array
+        (
+            [name] => Apple iPhone 15 Pro Max 256GB, beež Titanium
+            [price] => 1329 €
+        )
+
+    [45] => Array
+        (
+            [name] => Apple iPhone 15 Pro Max 256GB, valge Titanium
+            [price] => 1329 €
+        )
+
+    [46] => Array
+        (
+            [name] => Apple iPhone 15 Pro Max 512GB, beež Titanium
+            [price] => 1569 €
+        )
+
+    [47] => Array
+        (
+            [name] => Apple iPhone 15 Pro Max 512GB, must Titanium
+            [price] => 1569 €
+        )
+
+    [48] => Array
+        (
+            [name] => Apple iPhone 15 Pro Max 512GB, valge Titanium
+            [price] => 1569 €
+        )
+
+    [49] => Array
+        (
+            [name] => Apple iPhone 14 Plus 512GB, punane
+            [price] => 1259 €
+        )
+
+)
+
+btn clicked!
+New data captured: Array
+(
+    [0] => Array
+        (
+            [name] => Asus Zenfone 10 8+256GB, punane
+            [price] => 849,90 €
+        )
+
+    [1] => Array
+        (
+            [name] => Blackview A70, sinine
+            [price] => 84 €
+        )
+
+    [2] => Array
+        (
+            [name] => Honor X8a 6GB+128GB, rohekas sinine
+            [price] => 179,90 €
+        )
+
+    [3] => Array
+        (
+            [name] => Infinix Note 12 (2023) 128GB, sinine X676C
+            [price] => 119,90 €
+        )
+
+    [4] => Array
+        (
+            [name] => Infinix Note 12 (2023) 128GB, valge X676C
+            [price] => 119,90 €
+        )
+
+    [5] => Array
+        (
+            [name] => POCO M5S 128GB, valge
+            [price] => 229 €
+        )
+
+    [6] => Array
+        (
+            [name] => Realme C11 (2021) 32GB, sinine
+            [price] => 99,90 €
+        )
+
+    [7] => Array
+        (
+            [name] => Realme C15 64GB, hõbedane
+            [price] => 109,90 €
+        )
+
+    [8] => Array
+        (
+            [name] => Realme C21Y 64GB, must
+            [price] => 84,90 €
+        )
+
+    [9] => Array
+        (
+            [name] => Realme C21Y 64GB, sinine
+            [price] => 95,90 €
+        )
+
+    [10] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 256GB, hall SM-F731BZAGEUE
+            [price] => 1099 €
+        )
+
+    [11] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 256GB, lilla SM-F731BLIGEUE
+            [price] => 1099 €
+        )
+
+    [12] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 256GB, roheline SM-F731BLGGEUE
+            [price] => 1099 €
+        )
+
+    [13] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 512GB, beež SM-F731BZEHEUE
+            [price] => 1199 €
+        )
+
+    [14] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 512GB, hall SM-F731BZAHEUE
+            [price] => 1199 €
+        )
+
+    [15] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 256GB, beež SM-F946BZEBEUE
+            [price] => 1699 €
+        )
+
+    [16] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 256GB, must SM-F946BZKBEUE
+            [price] => 1699 €
+        )
+
+    [17] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 256GB, sinine SM-F946BLBBEUE
+            [price] => 1699 €
+        )
+
+    [18] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 512GB, beež SM-F946BZECEUE
+            [price] => 1799 €
+        )
+
+    [19] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 512GB, must SM-F946BZKCEUE
+            [price] => 1799 €
+        )
+
+    [20] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 512GB, sinine SM-F946BLBCEUE
+            [price] => 1799 €
+        )
+
+    [21] => Array
+        (
+            [name] => Samsung Galaxy S23 Ultra, 256GB, must SM-S918BZKDEUE
+            [price] => 1049 €
+        )
+
+    [22] => Array
+        (
+            [name] => Samsung Galaxy S23 Ultra, 512GB, must SM-S918BZKHEUE
+            [price] => 1199 €
+        )
+
+    [23] => Array
+        (
+            [name] => Samsung Galaxy S23, 128GB, must SM-S911BZKDEUE
+            [price] => 649,90 €
+        )
+
+    [24] => Array
+        (
+            [name] => Samsung Galaxy S23, 128GB, roheline SM-S911BZGDEUE
+            [price] => 749,90 €
+        )
+
+    [25] => Array
+        (
+            [name] => Asus Zenfone 10 8+256GB, punane
+            [price] => 849,90 €
+        )
+
+    [26] => Array
+        (
+            [name] => Blackview A70, sinine
+            [price] => 84 €
+        )
+
+    [27] => Array
+        (
+            [name] => Honor X8a 6GB+128GB, rohekas sinine
+            [price] => 179,90 €
+        )
+
+    [28] => Array
+        (
+            [name] => Infinix Note 12 (2023) 128GB, sinine X676C
+            [price] => 119,90 €
+        )
+
+    [29] => Array
+        (
+            [name] => Infinix Note 12 (2023) 128GB, valge X676C
+            [price] => 119,90 €
+        )
+
+    [30] => Array
+        (
+            [name] => POCO M5S 128GB, valge
+            [price] => 229 €
+        )
+
+    [31] => Array
+        (
+            [name] => Realme C11 (2021) 32GB, sinine
+            [price] => 99,90 €
+        )
+
+    [32] => Array
+        (
+            [name] => Realme C15 64GB, hõbedane
+            [price] => 109,90 €
+        )
+
+    [33] => Array
+        (
+            [name] => Realme C21Y 64GB, must
+            [price] => 84,90 €
+        )
+
+    [34] => Array
+        (
+            [name] => Realme C21Y 64GB, sinine
+            [price] => 95,90 €
+        )
+
+    [35] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 256GB, hall SM-F731BZAGEUE
+            [price] => 1099 €
+        )
+
+    [36] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 256GB, lilla SM-F731BLIGEUE
+            [price] => 1099 €
+        )
+
+    [37] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 256GB, roheline SM-F731BLGGEUE
+            [price] => 1099 €
+        )
+
+    [38] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 512GB, beež SM-F731BZEHEUE
+            [price] => 1199 €
+        )
+
+    [39] => Array
+        (
+            [name] => Samsung Galaxy Flip5, 512GB, hall SM-F731BZAHEUE
+            [price] => 1199 €
+        )
+
+    [40] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 256GB, beež SM-F946BZEBEUE
+            [price] => 1699 €
+        )
+
+    [41] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 256GB, must SM-F946BZKBEUE
+            [price] => 1699 €
+        )
+
+    [42] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 256GB, sinine SM-F946BLBBEUE
+            [price] => 1699 €
+        )
+
+    [43] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 512GB, beež SM-F946BZECEUE
+            [price] => 1799 €
+        )
+
+    [44] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 512GB, must SM-F946BZKCEUE
+            [price] => 1799 €
+        )
+
+    [45] => Array
+        (
+            [name] => Samsung Galaxy Fold5, 512GB, sinine SM-F946BLBCEUE
+            [price] => 1799 €
+        )
+
+    [46] => Array
+        (
+            [name] => Samsung Galaxy S23 Ultra, 256GB, must SM-S918BZKDEUE
+            [price] => 1049 €
+        )
+
+    [47] => Array
+        (
+            [name] => Samsung Galaxy S23 Ultra, 512GB, must SM-S918BZKHEUE
+            [price] => 1199 €
+        )
+
+    [48] => Array
+        (
+            [name] => Samsung Galaxy S23, 128GB, must SM-S911BZKDEUE
+            [price] => 649,90 €
+        )
+
+    [49] => Array
+        (
+            [name] => Samsung Galaxy S23, 128GB, roheline SM-S911BZGDEUE
+            [price] => 749,90 €
+        )
+
+)
+
