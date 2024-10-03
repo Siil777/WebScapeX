@@ -1,5 +1,4 @@
 let productList = [];
-
 async function fetchShopData(){
     try{
         const response = await fetch('http://localhost:999/get');
@@ -9,7 +8,7 @@ async function fetchShopData(){
         const Elements = Object.keys(data);
         productList = data[Elements];
         UserI();
-
+        mode();
     }catch(e){
         console.error(e);
     }
@@ -28,8 +27,28 @@ function UserI(Goods = productList){
         topDiv.appendChild(goodNameDiv);
     });
     container.appendChild(topDiv);
-
 }
+function mode(arr=productList){
+    const frequentElement = {};
+
+    arr.forEach((v)=>{
+        frequentElement[v] = (frequentElement[v] ||0) +1;
+    });
+    let maxVal = 0;
+    let nodeValue = null;
+
+    for(const[key,value] of Object.entries(frequentElement)){
+        if(value>maxVal){
+            maxVal = value;
+            nodeValue = key;
+        }
+    }
+    if(!isNaN(nodeValue)){
+        nodeValue = Number(nodeValue);
+    }
+    return nodeValue;
+}
+console.log(JSON.stringify(mode(productList)));
 document.addEventListener('DOMContentLoaded', ()=>{
     fetchShopData();
-})
+});
