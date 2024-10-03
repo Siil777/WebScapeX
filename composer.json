@@ -13,6 +13,7 @@
     ],
     "require": {
         "php-webdriver/webdriver": "^1.15",
-        "ext-json": "*"
+        "ext-json": "*",
+      "ext-apcu": "*"
     }
 }

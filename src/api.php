@@ -18,16 +18,19 @@ function getCacheData() {
         $cacheContent = file_get_contents(CACHE_FILE);
         $cacheData = json_decode($cacheContent, true);
 
-
+        // Check if the cache has a valid timestamp
         if (isset($cacheData['timestamp']) && (time() - $cacheData['timestamp'] < CACHE_TTL)) {
-            return $cacheData['data'];
+            return $cacheData['data']; // Return cached data
         }
     }
-    return null; 
+    return null;
 }
-
 function saveCacheData($data) {
-    file_put_contents(CACHE_FILE, json_encode(['data' => $data]));
+    $cacheData = [
+        'data' => $data,
+        'timestamp' => time()
+    ];
+    file_put_contents(CACHE_FILE, json_encode($cacheData));
 }
 
 $cacheData = getCacheData();
@@ -48,7 +51,6 @@ if ($cacheData !== null) {
     $driver->manage()->window()->setPosition(new WebDriverPoint(100, 100));
     $driver->manage()->window()->setSize(new WebDriverDimension(1200, 800));
 
-    try {
         $driver->get('https://onoff.ee/et/62-nutitelefonid');
         $responseData = [];
         $h3Elements = $driver->findElements(WebDriverBy::tagName('h3'));
@@ -78,27 +80,27 @@ if ($cacheData !== null) {
         if ($btn->isDisplayed()) {
             $btn->click();
             file_put_contents('log.txt', 'btn clicked!' . PHP_EOL, FILE_APPEND);
-        
+
             try {
                 // wait for next content
                 $driver->wait(60)->until(
                     WebDriverExpectedCondition::presenceOfElementLocated(WebDriverBy::tagName('h3'))
                 );
-        
+
                 // Ccapture new one
                 $newH3Elements = $driver->findElements(WebDriverBy::tagName('h3'));
                 $newH3Texts = [];
                 foreach ($newH3Elements as $h3Element) {
                     $newH3Texts[] = $h3Element->getText();
                 }
-    
+
                 $newPriceElements = $driver->findElements(WebDriverBy::className('price'));
                 $newPrices = [];
                 foreach ($newPriceElements as $priceElement) {
                     $newPrices[] = $priceElement->getText();
                 }
-        
-                // Combine 
+
+                // Combine
                 for ($i = 0; $i < count($newPrices); $i++) {
                     if (isset($newH3Texts[$i]) && isset($newPrices[$i])) {
                         $combineData[] = [
@@ -113,18 +115,15 @@ if ($cacheData !== null) {
         } else {
             echo "Element not visible";
         }
-        
-    } catch (TimeoutException $e) {
-        file_put_contents('log.txt', 'TimeoutException: ' . $e->getMessage() . PHP_EOL, FILE_APPEND);
-    }
-
+    $driver->quit();
     saveCacheData($combineData);
     $response = $combineData;
-    header('Content-Type: application/json');
-    echo json_encode(['response' => $response]);
-
-    $driver->quit();  
 }
+header('Content-Type: application/json');
+echo json_encode(['response' => $response]);
+
+
+
 
 
 

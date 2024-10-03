@@ -6,15 +6,15 @@ async function fetchShopData(){
         const data = await response.json();
         console.log('goods', data);
 
-/*         const Elements = Object.keys(data);
-        productList = data[Elements]; */
-        //UserI();
+        const Elements = Object.keys(data);
+        productList = data[Elements];
+        UserI();
 
     }catch(e){
         console.error(e);
     }
 }
-/*function UserI(Goods = productList){
+function UserI(Goods = productList){
     const container = document.getElementById('container');
     container.classList.add('d-flex','justify-content-center','mt-5');
     container.innerText = '';
@@ -29,7 +29,7 @@ async function fetchShopData(){
     });
     container.appendChild(topDiv);
 
-}*/
+}
 document.addEventListener('DOMContentLoaded', ()=>{
     fetchShopData();
 })
