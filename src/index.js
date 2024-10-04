@@ -30,7 +30,8 @@ function UserI(Goods = productList){
 }
 function mode(arr=productList){
     const frequentElement = {};
-
+    const container = document.getElementById('container-pop');
+    container.classList.add('d-flex','justify-content-center','mt-4');
     arr.forEach((v)=>{
         const name = v.name;
         frequentElement[name] = (frequentElement[name] ||0) +1;
@@ -47,7 +48,14 @@ function mode(arr=productList){
     if(!isNaN(nodeValue)){
         nodeValue = Number(nodeValue);
     }
-    return nodeValue;
+    const div = document.createElement('div');
+    div.textContent = 'The most frequently meet phone one the page: ';
+    const span = document.createElement('span');
+    span.classList.add('text-success');
+    span.textContent = nodeValue;
+
+    div.appendChild(span);
+    container.appendChild(div);
 }
 document.addEventListener('DOMContentLoaded', ()=>{
     fetchShopData();
