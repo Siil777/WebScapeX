@@ -8,7 +8,7 @@ async function fetchShopData(){
         const Elements = Object.keys(data);
         productList = data[Elements];
         UserI();
-        mode();
+        console.log('The most frequent phone', mode());
     }catch(e){
         console.error(e);
     }
@@ -32,7 +32,8 @@ function mode(arr=productList){
     const frequentElement = {};
 
     arr.forEach((v)=>{
-        frequentElement[v] = (frequentElement[v] ||0) +1;
+        const name = v.name;
+        frequentElement[name] = (frequentElement[name] ||0) +1;
     });
     let maxVal = 0;
     let nodeValue = null;
@@ -48,7 +49,6 @@ function mode(arr=productList){
     }
     return nodeValue;
 }
-console.log(JSON.stringify(mode(productList)));
 document.addEventListener('DOMContentLoaded', ()=>{
     fetchShopData();
 });
